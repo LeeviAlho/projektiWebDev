@@ -5,9 +5,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+//import styles from "./styles/style";
+
 // Include external files
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var userviewRouter = require("./routes/userview");
 
 // Start the app itself
 var app = express();
@@ -26,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Define routes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/userview", userviewRouter);
 
 app.set("postStorrage", []);
 

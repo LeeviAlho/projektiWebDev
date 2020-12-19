@@ -6,10 +6,10 @@ block content
 
   ul
   each post in posts
-    li #{post.author}: #{post.message}
+    p #{post.author}: #{post.message}
 
   else
-    li Looks like there are no posts here yet!
+    p Looks like there are no posts here yet!
 
   h2 Submit New Post
   form(method='POST' action='/create')
