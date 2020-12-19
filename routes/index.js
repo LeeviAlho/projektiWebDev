@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
-  var local_message = req.body.content;
+  var local_message = req.body.message;
   var local_author = req.body.author;
   console.log("Sent message: " + local_message);
   console.log("from: " + local_author);
@@ -21,7 +21,7 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
     message: local_message
   });
 
-  res.redirect("/index");
+  res.redirect("/");
 });
 
 module.exports = router;
