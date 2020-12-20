@@ -4,4 +4,21 @@ block content
   h1= title
   p Web Applications Social Channel
 
-  
+  h2= author
+
+  ul
+  each post in posts
+    p #{post.message}
+
+  else
+    p Looks like there are no posts here yet!
+
+  h2 Submit New Post
+  form(method='POST' action='/create')
+            div.form-group
+              label(for='name') Name:
+              input#name.form-control(type='text', placeholder='Your name' name='author')
+            div.form-group
+              label(for='message') Post text:
+              input#content.form-control(type='text' name='message')
+            button.btn.btn-primary(type='submit') Submit new post

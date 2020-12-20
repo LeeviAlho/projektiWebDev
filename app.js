@@ -4,6 +4,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var session = require("express-session");
 
 //import styles from "./styles/style";
 
@@ -32,6 +33,7 @@ app.use("/users", usersRouter);
 app.use("/userview", userviewRouter);
 
 app.set("postStorrage", []);
+app.set("userinfo", []);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -13,15 +13,20 @@ router.get("/", function (req, res, next) {
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var username = req.body.author;
   console.log("Searched for: " + username);
+  //req.app.get("userinfo").push(username);
 
-  //Search posts for user and if found, redirect to that site
+  //Go to userview-page with note of the sellected user
   req.app
-    .get("postStorrage")
-    .filter(function (user) {
-      return user.author === username;
-    })
+    .get("userinfo")
+    .unshift(username)
     .then(res.redirect("/userview"), res.redirect("/users"));
   //
 });
 
 module.exports = router;
+// ("postStorrage")
+//     .find(function (user) {
+//       return user.author === username;
+//     })
+//     .then(function (user){
+//       if (req.app.get
