@@ -6,7 +6,7 @@ block content
 
 
   h2 What user's account do you want to use?
-  form(method='login' action='/read')
+  form(method='POST' action='/users/read')
             div.form-group
               label(for='username') Username:
               input#name.form-control(type='text', placeholder='Your username' name='author')

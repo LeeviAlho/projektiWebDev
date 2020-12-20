@@ -20,9 +20,7 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
     .filter(function (user) {
       return user.author === username;
     })
-    .then(res.redirect("/userview", username), res.redirect("/"));
-
-  res.redirect("/");
+    .then(res.redirect("/userview"), res.redirect("/users"));
   //
 });
 
