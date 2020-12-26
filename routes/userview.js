@@ -7,9 +7,8 @@ const { body } = require("express-validator");
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
   var username = req.app.get("userinfo");
-
   if (username.length > 1) {
-    username.pop();
+    req.app.get("userinfo").pop();
   }
 
   res.render("userview", { title: "WASC", posts: postdata, author: username });
@@ -17,7 +16,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var local_message = req.body.message;
-  var local_author = req.body.author;
+  var local_author = req.app.get("userinfo");
   console.log("Sent message: " + local_message);
   console.log("from: " + local_author);
 

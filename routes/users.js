@@ -24,9 +24,3 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
 });
 
 module.exports = router;
-// ("postStorrage")
-//     .find(function (user) {
-//       return user.author === username;
-//     })
-//     .then(function (user){
-//       if (req.app.get
