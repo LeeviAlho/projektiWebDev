@@ -8,15 +8,14 @@ block content
 
   h2= author
 
-  - var i = "0";
+  - var noMessages = true
 
   ul
   each post in posts
     if post.author == author
-      p #{post.message}
-      - var i = "1";
-
-  if i = "0"
+      li #{post.message}
+      - noMessages = false
+  if noMessages
     p Looks like this user hasn't posted anything!
 
   h2 Submit New Post

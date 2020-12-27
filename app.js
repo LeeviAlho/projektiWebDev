@@ -27,13 +27,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.set("trust proxy", 1);
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  })
+);
+
 // Define routes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/userview", userviewRouter);
 
 app.set("postStorrage", []);
-app.set("userinfo", []);
+app.set("userinfo", "");
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {

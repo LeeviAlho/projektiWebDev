@@ -16,10 +16,8 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
   //req.app.get("userinfo").push(username);
 
   //Go to userview-page with note of the sellected user
-  req.app
-    .get("userinfo")
-    .unshift(username)
-    .then(res.redirect("/userview"), res.redirect("/users"));
+  req.app.set("userinfo", username);
+  res.redirect("/userview");
   //
 });
 
