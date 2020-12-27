@@ -3,12 +3,10 @@ var router = express.Router();
 
 const { body } = require("express-validator");
 
-var username;
-
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
-  username = req.app.get("userinfo");
+  var username = req.app.get("userinfo");
   console.log("Username set to: " + username);
   if (req.session.views) {
     req.session.views++;
@@ -18,12 +16,13 @@ router.get("/", function (req, res, next) {
   res.render("userview", {
     title: "WASC",
     posts: postdata,
-    author: username,
+    author: req.session.username,
     cookietimer: req.session.views
   });
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
+  var username = req.session.username;
   console.log("Username set to:" + username);
   var local_message = req.body.message;
   console.log("Sent message: " + local_message);
