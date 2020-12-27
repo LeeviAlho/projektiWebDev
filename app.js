@@ -24,16 +24,17 @@ app.set("view engine", "pug");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("maanantaiaamut"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("trust proxy", 1);
 app.use(
   session({
-    secret: "keyboard cat",
-    resave: false,
+    secret: "maanantaiaamut",
+    rolling: true,
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure: false, maxAge: 900000 }
   })
 );
 
