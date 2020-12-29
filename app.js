@@ -12,6 +12,8 @@ var session = require("express-session");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var userviewRouter = require("./routes/userview");
+var loginRouter = require("./routes/login");
+var signRouter = require("./routes/sign");
 
 // Start the app itself
 var app = express();
@@ -42,8 +44,12 @@ app.use(
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/userview", userviewRouter);
+app.use("/login", loginRouter);
+app.use("/sign", signRouter);
 
 app.set("postStorrage", []);
+app.set("userinfo", []);
+app.set("userbase", []);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {

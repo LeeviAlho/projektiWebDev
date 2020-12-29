@@ -17,7 +17,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var local_message = req.body.message;
-  var local_author = req.body.author;
+  var local_author = req.session.username;
   console.log("Sent message: " + local_message);
   console.log("from: " + local_author);
 

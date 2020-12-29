@@ -4,6 +4,16 @@ block content
   h1= title
   p Web Applications Social Channel
 
+  if author
+    h2 Tell what's on your mind
+    form(method='POST' action='/create')
+              div.form-group
+
+                label(for='message') Post text:
+                input#content.form-control(type='text' name='message')
+              button.btn.btn-primary(type='submit') Submit new post
+
+
   ul
   each post in posts
     p #{post.author}: #{post.message}
@@ -11,13 +21,4 @@ block content
   else
     p Looks like there are no posts here yet!
 
-  if author
-    h2 Submit New Post
-    form(method='POST' action='/create')
-              div.form-group
-                label(for='name') Name:
-                input#name.form-control(type='text', name='author', value=author readonly)
-              div.form-group
-                label(for='message') Post text:
-                input#content.form-control(type='text' name='message')
-              button.btn.btn-primary(type='submit') Submit new post
+  

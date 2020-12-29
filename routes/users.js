@@ -6,27 +6,24 @@ const { body } = require("express-validator");
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
-  if (req.session.username) {
-    req.session.views++;
-    res.render("userview", {
-      title: "WASC",
-      posts: postdata,
-      author: req.session.username,
-      cookietimer: req.session.views
-    });
-  } else {
-    res.render("users", { title: "WASC", posts: postdata });
-  }
+
+  res.render("users", { title: "WASC", posts: postdata });
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
-  var username = req.body.author;
-  console.log("Searched for: " + username);
-  //req.app.get("userinfo").push(username);
-  //Go to userview-page with note of the sellected user
-  req.session.username = username;
-  res.redirect("/userview");
-  //
+  if (req.app.get("userbase").indexOf(req.body.author) < 0) {
+    throw new Error("Username not found");
+  } else {
+    var username = req.body.author;
+    console.log("Searched for: " + username);
+    if (username !== req.session.username) {
+      req.app.get("userinfo").push(username);
+    } else {
+      req.session.username = username;
+    }
+    //Go to userview-page with note of the sellected user
+    res.redirect("/userview");
+  }
 });
 
 module.exports = router;
