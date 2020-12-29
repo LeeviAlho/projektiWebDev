@@ -23,7 +23,6 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var username = req.body.author;
   console.log("Searched for: " + username);
   //req.app.get("userinfo").push(username);
-
   //Go to userview-page with note of the sellected user
   req.session.username = username;
   res.redirect("/userview");

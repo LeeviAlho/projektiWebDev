@@ -11,12 +11,13 @@ block content
   else
     p Looks like there are no posts here yet!
 
-  h2 Submit New Post
-  form(method='POST' action='/create')
-            div.form-group
-              label(for='name') Name:
-              input#name.form-control(type='text', placeholder='Your name' name='author')
-            div.form-group
-              label(for='message') Post text:
-              input#content.form-control(type='text' name='message')
-            button.btn.btn-primary(type='submit') Submit new post
+  if author
+    h2 Submit New Post
+    form(method='POST' action='/create')
+              div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', name='author', value=author readonly)
+              div.form-group
+                label(for='message') Post text:
+                input#content.form-control(type='text' name='message')
+              button.btn.btn-primary(type='submit') Submit new post

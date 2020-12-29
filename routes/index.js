@@ -7,7 +7,12 @@ const { body } = require("express-validator");
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
 
-  res.render("index", { title: "WASC", posts: postdata });
+  if (req.session.username) {
+    var username = req.session.username;
+    res.render("index", { title: "WASC", posts: postdata, author: username });
+  } else {
+    res.render("index", { title: "WASC", posts: postdata });
+  }
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
