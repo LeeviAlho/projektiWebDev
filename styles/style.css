@@ -1,0 +1,9 @@
+.state-indicator {
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .state-indicator {
+    z-index: 2;
+  }
+}
