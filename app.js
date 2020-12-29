@@ -53,6 +53,9 @@ app.set("postStorrage", []);
 app.set("userinfo", []);
 app.set("userbase", []);
 
+app.set("title", "WASP");
+app.set("subtitle", "Web Applications Social Platform");
+
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

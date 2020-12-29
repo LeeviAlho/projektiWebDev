@@ -2,12 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Web Applications Social Channel
+  p #{subtitle}
+
 
 
   h2 Sign up
   form(method='POST' action='/sign/create')
             div.form-group
               label(for='username') Username:
-              input#name.form-control(type='text', placeholder='Your username' name='author')
+              input#name.form-control(type='text', placeholder='Your username' name='author', class="card-panel teal lighten-1")
             button.btn.btn-primary(type='submit') Open

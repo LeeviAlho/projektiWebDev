@@ -8,7 +8,10 @@ router.get("/", function (req, res, next) {
   if (req.session.username) {
     res.redirect("/ownpage");
   } else {
-    res.render("login", { title: "WASC" });
+    res.render("login", {
+      title: req.app.get("title"),
+      subtitle: req.app.get("subtitle")
+    });
   }
 });
 

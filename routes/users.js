@@ -7,7 +7,11 @@ const { body } = require("express-validator");
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
 
-  res.render("users", { title: "WASC", posts: postdata });
+  res.render("users", {
+    title: req.app.get("title"),
+    subtitle: req.app.get("subtitle"),
+    posts: postdata
+  });
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {

@@ -22,8 +22,10 @@ router.get("/", function (req, res, next) {
   } else {
     req.session.views = 1;
   }
+
   res.render("ownpage", {
-    title: "WASC",
+    title: req.app.get("title"),
+    subtitle: req.app.get("subtitle"),
     posts: postdata,
     author: username,
     cookietimer: req.session.views
@@ -39,12 +41,16 @@ router.get("/logout", function (req, res) {
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var local_message = req.body.message;
   var local_author = req.session.username;
+
+  var local_time = new Date();
   console.log("Sent message: " + local_message);
   console.log("from: " + local_author);
+  console.log("At: " + local_time);
 
   req.app.get("postStorrage").push({
     author: local_author,
-    message: local_message
+    message: local_message,
+    time: local_time
   });
 
   res.redirect("/ownpage");

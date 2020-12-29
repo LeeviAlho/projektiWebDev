@@ -9,21 +9,47 @@ router.get("/", function (req, res, next) {
 
   if (req.session.username) {
     var username = req.session.username;
-    res.render("index", { title: "WASC", posts: postdata, author: username });
+    res.render("index", {
+      title: req.app.get("title"),
+      subtitle: req.app.get("subtitle"),
+      posts: postdata,
+      author: username
+    });
   } else {
-    res.render("index", { title: "WASC", posts: postdata });
+    res.render("index", {
+      title: req.app.get("title"),
+      subtitle: req.app.get("subtitle"),
+      posts: postdata
+    });
   }
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var local_message = req.body.message;
   var local_author = req.session.username;
+
+  var local_time = new Date();
+  // var local_time =
+  //   today.getUTCFullYear() +
+  //   "." +
+  //   (today.getUTCMonth() + 1) +
+  //   "." +
+  //   today.getUTCDate() +
+  //   " " +
+  //   today.getUTCHours() +
+  //   ":" +
+  //   today.getUTCMinutes() +
+  //   ":" +
+  //   today.getUTCSeconds();
   console.log("Sent message: " + local_message);
   console.log("from: " + local_author);
 
+  console.log("At: " + local_time);
+
   req.app.get("postStorrage").push({
     author: local_author,
-    message: local_message
+    message: local_message,
+    time: local_time
   });
 
   res.redirect("/");

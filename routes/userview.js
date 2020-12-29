@@ -21,7 +21,8 @@ router.get("/", function (req, res, next) {
     req.session.views = 1;
   }
   res.render("userview", {
-    title: "WASC",
+    title: req.app.get("title"),
+    subtitle: req.app.get("subtitle"),
     posts: postdata,
     author: username,
     cookietimer: req.session.views,

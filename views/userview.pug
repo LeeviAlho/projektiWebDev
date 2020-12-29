@@ -4,7 +4,8 @@ extends layout
 
 block content
   h1= title
-  p Web Applications Social Channel
+  p #{subtitle}
+
 
   h2= author
 
@@ -15,7 +16,7 @@ block content
   ul
   each post in posts
     if post.author == author
-      li #{post.message}
+      li #{post.message} - #{post.time}
       - noMessages = false
   if noMessages
     p Looks like this user hasn't posted anything!

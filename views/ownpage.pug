@@ -4,7 +4,8 @@ extends layout
 
 block content
   h1= title
-  p Web Applications Social Channel
+  p #{subtitle}
+
 
   h2= author
   form(method="get" action="/ownpage/logout")
@@ -26,7 +27,10 @@ block content
   ul
   each post in posts
     if post.author == author
-      li #{post.message}
+      if post.time.getSeconds() < 10
+        p #{post.author}: #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+      else
+        p #{post.author}: #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
       - noMessages = false
   if noMessages
     p Looks like this user hasn't posted anything!
