@@ -23,12 +23,12 @@ router.post(
       throw new Error("Username not long enough");
     } else {
       var username = req.body.author;
-      console.log("Searched for: " + username);
+      console.log("New user created: " + username);
       //
       //Go to userview-page with note of the sellected user
       req.session.username = username;
       req.app.get("userbase").push(username);
-      res.redirect("/userview");
+      res.redirect("/ownpage");
     }
     //
   }

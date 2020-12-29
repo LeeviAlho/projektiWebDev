@@ -14,6 +14,7 @@ var usersRouter = require("./routes/users");
 var userviewRouter = require("./routes/userview");
 var loginRouter = require("./routes/login");
 var signRouter = require("./routes/sign");
+var ownpageRouter = require("./routes/ownpage");
 
 // Start the app itself
 var app = express();
@@ -46,6 +47,7 @@ app.use("/users", usersRouter);
 app.use("/userview", userviewRouter);
 app.use("/login", loginRouter);
 app.use("/sign", signRouter);
+app.use("/ownpage", ownpageRouter);
 
 app.set("postStorrage", []);
 app.set("userinfo", []);

@@ -10,6 +10,13 @@ block content
 
   p Times visited a userpage during login: #{cookietimer}
 
+  h2 Tell what's on your mind
+  form(method='POST' action='/ownpage/create')
+            div.form-group
+              label(for='message') Post text:
+              input#content.form-control(type='text' name='message')
+            button.btn.btn-primary(type='submit') Submit a new post
+
   - var noMessages = true
 
   ul
