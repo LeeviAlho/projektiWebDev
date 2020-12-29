@@ -26,26 +26,27 @@ block content
   - var noMessages = true
 
   ul
-  div(class="col s1")
-  each post in posts.reverse()
-    if post.author == author
-      if post.time.getMinutes() < 10
-        if post.time.getSeconds() < 10
-          div(class="col s11 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:0#{post.time.getSeconds()}
-        else
-          div(class="col s11 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:#{post.time.getSeconds()}
-      else
-        if post.time.getSeconds() < 10
-          div(class="col s11 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
-        else
-          div(class="col s11 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
-    - noMessages = false
-  if noMessages
-    p Looks like this user hasn't posted anything!
+  div
+   span(class="flow-text")
+      each post in posts
+        if post.author == author
+          if post.time.getMinutes() < 10
+            if post.time.getSeconds() < 10
+              div(class="col s11 m8" id="comment") #{post.message} 
+              div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+            else
+              div(class="col s11 m8" id="comment") #{post.message} 
+              div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:#{post.time.getSeconds()}
+          else
+            if post.time.getSeconds() < 10
+              div(class="col s11 m8" id="comment") #{post.message} 
+              div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+            else
+              div(class="col s11 m8" id="comment") #{post.message} 
+              div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
+        - noMessages = false
+      if noMessages
+        p Looks like you haven't posted anything!
 
   
   //- h2 Submit New Post

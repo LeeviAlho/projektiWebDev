@@ -15,7 +15,7 @@ block content
 
 
   ul
-  each post in posts.reverse()
+  each post in posts
     if post.time.getMinutes() < 10
       if post.time.getSeconds() < 10
         div(class="flow-text" id="comment") #{post.author}: #{post.message} 

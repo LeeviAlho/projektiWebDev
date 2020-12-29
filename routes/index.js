@@ -6,7 +6,7 @@ const { body } = require("express-validator");
 /* GET home page. */
 router.get("/", function (req, res, next) {
   var postdata = req.app.get("postStorrage");
-
+  req.app.get("postStorrage").reverse();
   if (req.session.username) {
     var username = req.session.username;
     res.render("index", {
@@ -22,6 +22,7 @@ router.get("/", function (req, res, next) {
       posts: postdata
     });
   }
+  req.app.get("postStorrage").reverse();
 });
 
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
@@ -45,7 +46,6 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
   console.log("from: " + local_author);
 
   console.log("At: " + local_time);
-
   req.app.get("postStorrage").push({
     author: local_author,
     message: local_message,

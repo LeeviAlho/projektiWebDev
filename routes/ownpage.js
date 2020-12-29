@@ -22,7 +22,7 @@ router.get("/", function (req, res, next) {
   } else {
     req.session.views = 1;
   }
-
+  req.app.get("postStorrage").reverse();
   res.render("ownpage", {
     title: req.app.get("title"),
     subtitle: req.app.get("subtitle"),
@@ -30,6 +30,7 @@ router.get("/", function (req, res, next) {
     author: username,
     cookietimer: req.session.views
   });
+  req.app.get("postStorrage").reverse();
 });
 
 router.get("/logout", function (req, res) {
