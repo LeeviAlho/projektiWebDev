@@ -16,11 +16,9 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
   } else {
     var username = req.body.author;
     console.log("Searched for: " + username);
-    if (username !== req.session.username) {
-      req.app.get("userinfo").push(username);
-    } else {
-      req.session.username = username;
-    }
+
+    req.app.get("userinfo").push(username);
+
     //Go to userview-page with note of the sellected user
     res.redirect("/userview");
   }
