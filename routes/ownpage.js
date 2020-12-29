@@ -30,6 +30,12 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.get("/logout", function (req, res) {
+  console.log("Logging out: " + username);
+  req.session.username = "";
+  res.redirect("/");
+});
+
 router.post("/create", body("*").trim().escape(), function (req, res, next) {
   var local_message = req.body.message;
   var local_author = req.session.username;

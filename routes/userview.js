@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
   if (req.app.get("postStorrage")) {
     var postdata = req.app.get("postStorrage");
   }
-  username = req.app.get("userinfo").pop();
+  username = req.app.get("userinfo")[0];
   if (req.session.username === username) {
     res.redirect("/ownpage");
   }
@@ -40,7 +40,7 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
     message: local_message
   });
 
-  res.redirect("/");
+  res.redirect("/userview");
 });
 
 module.exports = router;

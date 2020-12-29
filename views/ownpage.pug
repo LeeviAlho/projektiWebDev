@@ -7,6 +7,8 @@ block content
   p Web Applications Social Channel
 
   h2= author
+  form(method="get" action="/ownpage/logout")
+    button.btn.btn-primary(type='Logoff') Log out
 
   p Times visited a userpage during login: #{cookietimer}
 
@@ -16,6 +18,8 @@ block content
               label(for='message') Post text:
               input#content.form-control(type='text' name='message')
             button.btn.btn-primary(type='submit') Submit a new post
+
+  
 
   - var noMessages = true
 
