@@ -15,7 +15,6 @@ router.get("/", function (req, res, next) {
   if (req.session.username === username) {
     res.redirect("/ownpage");
   }
-
   if (req.session.views) {
     req.session.views++;
   } else {
