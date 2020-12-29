@@ -28,9 +28,9 @@ block content
   each post in posts
     if post.author == author
       if post.time.getSeconds() < 10
-        p #{post.author}: #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+        li #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
       else
-        p #{post.author}: #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
+        li #{post.message} - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
       - noMessages = false
   if noMessages
     p Looks like this user hasn't posted anything!
