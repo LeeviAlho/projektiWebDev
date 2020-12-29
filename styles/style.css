@@ -1,9 +1,3 @@
-.state-indicator {
-  z-index: 1;
-}
+@charset "UTF-8";
 
-@media (max-width: 768px) {
-  .state-indicator {
-    z-index: 2;
-  }
-}
+/*CSS DOCUMENT*/

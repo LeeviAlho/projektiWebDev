@@ -3,21 +3,33 @@ extends layout
 
 
 block content
-  h1= title
-  p #{subtitle}
+  div(class="col s12 m6", id="title") #{title}
+  div(class="col s12 m6", id="subtitle") #{subtitle}
 
-
-  h2= author
+  div(id="pagetitle") #{author}
 
   p Times visited a userpage during login: #{cookietimer}
 
   - var noMessages = true
 
   ul
-  each post in posts
+ each post in posts.reverse()
     if post.author == author
-      li #{post.message} - #{post.time}
-      - noMessages = false
+      if post.time.getMinutes() < 10
+        if post.time.getSeconds() < 10
+          div(class="col s12 m8" id="comment") #{post.message} 
+          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+        else
+          div(class="col s12 m8" id="comment") #{post.message} 
+          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:#{post.time.getSeconds()}
+      else
+        if post.time.getSeconds() < 10
+          div(class="col s12 m8" id="comment") #{post.message} 
+          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+        else
+          div(class="col s12 m8" id="comment") #{post.message} 
+          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
+    - noMessages = false
   if noMessages
     p Looks like this user hasn't posted anything!
 

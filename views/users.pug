@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p #{subtitle}
+  div(class="col s12 m6", id="title") #{title}
+  div(class="col s12 m6", id="subtitle") #{subtitle}
 
 
 
-  h2 What user's posts do you want to look at?
+  div(id="pagetitle") What user's posts do you want to look at?
   form(method='POST' action='/users/create')
             div.form-group
-              label(for='username') Username:
-              input#name.form-control(type='text', placeholder='Your username' name='author', class="card-panel teal lighten-1")
+              label(for='username') Who are you searching for?
+              input#name.form-control(type='text', placeholder='Username' name='author', class="card-panel teal lighten-1")
             button.btn.btn-primary(type='submit') Open

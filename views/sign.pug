@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p #{subtitle}
+  div(class="col s12 m6", id="title") #{title}
+  div(class="col s12 m6", id="subtitle") #{subtitle}
 
 
 
-  h2 Sign up
+  div(id="pagetitle") Sign up
   form(method='POST' action='/sign/create')
             div.form-group
               label(for='username') Username:
