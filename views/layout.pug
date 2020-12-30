@@ -4,9 +4,18 @@ html
     title= title
     
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     style.
       html {
-        background: rgb(200, 285, 300);
+        background: rgb(253, 255, 155);
+      }
+
+      label {
+        font-size: 14px;
+      }
+      .input-field {
+        background: rgb(204, 185, 9);
       }
 
       #commentTime {
@@ -33,9 +42,53 @@ html
     block scripts
       script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
   body
+
+  -//Footer with the logo and name
+    footer(class="page-footer orange flow-text")
+      div(class="row")
+        div(class="col s10 m5 offset-s1 offset-m1", id="title") #{title}
+        div(class="col s10 m5 offset-s1", id="subtitle") #{subtitle}
+
+    -//Navigation menus depending on whether the user has logged into or not
+    if author
+      div(class="flow-text transparent")
+        div(class="nav-wrapper transparent")
+          a(href="#!" class="brand-logo")
+          ul(class="right hide-on-small-only")
+            li
+              a(class="waves-effect waves-light btn") Log in 
+                i(class="material-icons right") account_circle
+            li
+              a(class="waves-effect waves-light btn") Search for user
+          ul(class="left hide-on-med-and-up")
+            li
+              a(class="waves-effect waves-light btn") Own page 
+                i(class="material-icons right") account_circle
+            li
+              a(class="waves-effect waves-light btn") Search for user
+    else
+      div(class="flow-text transparent")
+        div(class="nav-wrapper transparent")
+          a(href="#!" class="brand-logo")
+          ul(class="right hide-on-small-only")
+            li
+              a(class="waves-effect waves-light btn") Log in 
+                i(class="material-icons right") account_circle
+            li
+              a(class="waves-effect waves-light btn") Search for user
+          ul(class="left hide-on-med-and-up")
+            li
+              a(class="waves-effect waves-light btn") Log in 
+                i(class="material-icons right") account_circle
+            li
+              a(class="waves-effect waves-light btn") Search for user
+
     
-    block content
-    block foot
-      #footer
-        p Web Applications Social Channel by Leevi Alho
-        p Made for the course "Web Applications"
+  -//text block based on the page
+    div(class="row flow-text")
+      block content
+    div(class="row")
+      block foot
+        #footer(class="col s10 offset-s1")
+          p Web Applications Social Channel by Leevi Alho
+          p Made for the course "Web Applications"

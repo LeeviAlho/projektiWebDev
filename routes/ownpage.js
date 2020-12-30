@@ -16,7 +16,7 @@ router.get("/", function (req, res, next) {
   } else {
     res.redirect("/login");
   }
-  console.log("Username set to: " + username);
+  console.log("Own page visited by: " + username);
   if (req.session.views) {
     req.session.views++;
   } else {

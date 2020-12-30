@@ -3,35 +3,35 @@ extends layout
 
 
 block content
-  div(class="col s12 m6", id="title") #{title}
-  div(class="col s12 m6", id="subtitle") #{subtitle}
+ 
 
-  div(id="pagetitle") #{author}
+  div(id="pagetitle" class="col s10 offset-s1") #{author}
 
-  p Times visited a userpage during login: #{cookietimer}
+  
 
   - var noMessages = true
 
-  ul
-  each post in posts
-    if post.author == author
-      if post.time.getMinutes() < 10
-        if post.time.getSeconds() < 10
-          div(class="col s12 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+  div(class="col s10 m6 offset-s1 offset-m1")
+    ul
+    each post in posts
+      if post.author == author
+        if post.time.getMinutes() < 10
+          if post.time.getSeconds() < 10
+            div(id="comment") #{post.message} 
+            div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+          else
+            div(id="comment") #{post.message} 
+            div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:#{post.time.getSeconds()}
         else
-          div(class="col s12 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:0#{post.time.getMinutes()}:#{post.time.getSeconds()}
-      else
-        if post.time.getSeconds() < 10
-          div(class="col s12 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
-        else
-          div(class="col s12 m8" id="comment") #{post.message} 
-          div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
-    - noMessages = false
-  if noMessages
-    p Looks like this user hasn't posted anything!
+          if post.time.getSeconds() < 10
+            div(id="comment") #{post.message} 
+            div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:0#{post.time.getSeconds()}
+          else
+            div(id="comment") #{post.message} 
+            div(id="commentTime") - #{post.time.getFullYear()}.#{(post.time.getMonth()+1)}.#{post.time.getDate()} #{post.time.getHours()}:#{post.time.getMinutes()}:#{post.time.getSeconds()}
+      - noMessages = false
+    if noMessages
+      p Looks like this user hasn't posted anything!
 
   
   //- h2 Submit New Post

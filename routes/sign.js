@@ -6,7 +6,7 @@ const { body, validationResult } = require("express-validator");
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   if (req.session.username) {
-    res.redirect("/userview");
+    res.redirect("/ownpage");
   } else {
     res.render("sign", {
       title: req.app.get("title"),

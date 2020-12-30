@@ -1,14 +1,11 @@
 extends layout
 
 block content
-  div(class="col s12 m6", id="title") #{title}
-  div(class="col s12 m6", id="subtitle") #{subtitle}
 
+  div(id="pagetitle" class="col s11 offset-s1") Sign up
 
-
-  div(id="pagetitle") Sign up
-  form(method='POST' action='/sign/create')
-            div.form-group
-              label(for='username') Username:
-              input#name.form-control(type='text', placeholder='Your username' name='author', class="card-panel teal lighten-1")
-            button.btn.btn-primary(type='submit') Open
+  form(method='POST' action='/sign/create', class="col s10 offset-s1")
+    div.form-group
+      label(for='username', class="grey-text text-darken-1") Create a username (max 28 characters long):
+        input#name.form-control(class="orange", type='text', placeholder='  Your username' name='author', maxlength="28", class="card-panel teal lighten-1")
+    button.btn.btn-primary(type='submit', class="orange") Sign up
