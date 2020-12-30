@@ -22,7 +22,7 @@ router.get("/", function (req, res, next) {
   } else {
     req.session.views = 1;
   }
-  req.app.get("postStorrage").reverse();
+
   res.render("ownpage", {
     title: req.app.get("title"),
     subtitle: req.app.get("subtitle"),
@@ -30,7 +30,6 @@ router.get("/", function (req, res, next) {
     author: username,
     cookietimer: req.session.views
   });
-  req.app.get("postStorrage").reverse();
 });
 
 router.get("/logout", function (req, res) {
@@ -48,7 +47,7 @@ router.post("/create", body("*").trim().escape(), function (req, res, next) {
   console.log("from: " + local_author);
   console.log("At: " + local_time);
 
-  req.app.get("postStorrage").push({
+  req.app.get("postStorrage").unshift({
     author: local_author,
     message: local_message,
     time: local_time
