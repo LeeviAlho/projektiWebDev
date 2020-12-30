@@ -46,42 +46,27 @@ html
   -//Footer with the logo and name
     footer(class="page-footer orange flow-text")
       div(class="row")
-        div(class="col s10 m5 offset-s1 offset-m1", id="title") #{title}
+        a(class="col s10 m5 offset-s1 offset-m1 white-text", id="title", href="/") #{title}
         div(class="col s10 m5 offset-s1", id="subtitle") #{subtitle}
 
     -//Navigation menus depending on whether the user has logged into or not
-    if author
-      div(class="flow-text transparent")
-        div(class="nav-wrapper transparent")
-          a(href="#!" class="brand-logo")
-          ul(class="right hide-on-small-only")
-            li
-              a(class="waves-effect waves-light btn") Log in 
-                i(class="material-icons right") account_circle
-            li
-              a(class="waves-effect waves-light btn") Search for user
-          ul(class="left hide-on-med-and-up")
-            li
-              a(class="waves-effect waves-light btn") Own page 
-                i(class="material-icons right") account_circle
-            li
-              a(class="waves-effect waves-light btn") Search for user
-    else
-      div(class="flow-text transparent")
-        div(class="nav-wrapper transparent")
-          a(href="#!" class="brand-logo")
-          ul(class="right hide-on-small-only")
-            li
-              a(class="waves-effect waves-light btn") Log in 
-                i(class="material-icons right") account_circle
-            li
-              a(class="waves-effect waves-light btn") Search for user
-          ul(class="left hide-on-med-and-up")
-            li
-              a(class="waves-effect waves-light btn") Log in 
-                i(class="material-icons right") account_circle
-            li
-              a(class="waves-effect waves-light btn") Search for user
+    
+    div(class="flow-text transparent")
+      div(class="nav-wrapper transparent")
+        a(href="#!" class="brand-logo")
+        ul(class="right hide-on-small-only")
+          li
+            a(class="waves-effect waves-light orange btn", href="/ownpage") My account 
+              i(class="material-icons right") account_circle
+          li
+            a(class="waves-effect waves-light orange btn", href="/users") Search for user
+        ul(class="left hide-on-med-and-up")
+          li
+            a(class="waves-effect waves-light orange btn", href="/ownpage") My account 
+              i(class="material-icons right") account_circle
+          li
+            a(class="waves-effect waves-light orange btn", href="/users") Search for user
+   
 
     
   -//text block based on the page
