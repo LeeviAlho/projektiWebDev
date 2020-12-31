@@ -14,10 +14,7 @@ html
       label {
         font-size: 14px;
       }
-      .input-field {
-        background: rgb(204, 185, 9);
-      }
-
+      
       #commentTime {
         font-size: 17px;
       }
@@ -54,16 +51,17 @@ html
     div(class="flow-text transparent")
       div(class="nav-wrapper transparent")
         a(href="#!" class="brand-logo")
+        ul(class="row hide-on-med-and-up")
+          li(class="col s12")
+            a(class="col s6 waves-effect waves-light orange btn", href="/ownpage") My account 
+              i(class="material-icons right") account_circle
+            a(class="col s6 waves-effect waves-light orange btn", href="/users") Search for user
         ul(class="right hide-on-small-only")
           li
             a(class="waves-effect waves-light orange btn", href="/ownpage") My account 
               i(class="material-icons right") account_circle
           li
-            a(class="waves-effect waves-light orange btn", href="/users") Search for user
-        ul(class="left hide-on-med-and-up")
-          li
-            a(class="waves-effect waves-light orange btn", href="/ownpage") My account 
-              i(class="material-icons right") account_circle
+            div
           li
             a(class="waves-effect waves-light orange btn", href="/users") Search for user
    
